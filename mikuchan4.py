@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import openai
 from openai import OpenAI
-import miku_JSON_init
 
 # Hardcoded API key and Discord token
 OPEN_API_KEY = "no"
@@ -66,13 +65,6 @@ async def on_message(message):
 
     # Process commands if any
     await bot.process_commands(message)
-
-@bot.command()
-async def remember(ctx, *, info):
-    """Command to make Miku remember something about a user."""
-    user_id = ctx.author.id
-    miku_JSON_init.update_memory(user_id, info) # Save memory
-    await ctx.send(f"_miku will remember_ , {ctx.author.name}")
 
 # Run the bot using the hardcoded Discord token
 bot.run(DISCORD_TOKEN)
